@@ -1,7 +1,7 @@
-output "instance_ami" {
-  value = aws_instance.ubuntu.ami
+output "node-private" {
+  value = [for instance in aws_instance.ubuntu: instance.private_ip]
 }
 
-output "instance_arn" {
-  value = aws_instance.ubuntu.arn
+output "node-public" {
+  value = [for instance in aws_instance.ubuntu: instance.public_ip]
 }
